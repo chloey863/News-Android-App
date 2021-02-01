@@ -2,6 +2,7 @@ package com.chloeproject.newstime.network;
 
 import android.content.Context;
 
+import com.ashokvarma.gander.GanderInterceptor;
 import com.chloeproject.newstime.BuildConfig;
 
 import java.io.IOException;
@@ -15,13 +16,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-//    String API_KEY = BuildConfig.newsAPIKey;
     private static final String API_KEY = BuildConfig.newsAPIKey; // Fixed: works after "Invalid caches and restart" Android program
     private static final String BASE_URL = "https://newsapi.org/v2/";
 
     public static Retrofit newInstance(Context context) {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new HeaderInterceptor())
+                .addInterceptor(new GanderInterceptor(context).showNotification(true))
                 .build();
 
         // Retrofit is a type-safe HTTP client for Android and Java.
