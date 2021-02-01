@@ -9,4 +9,3 @@ Main works include but not limit to:
 - Built the Room Database with LiveData & ViewModel to support local cache and offline model
 - Integrated Retrofit and RxJava2 to pull the latest news data from a RESTful endpoint  (newsapi.org) 
 
-(My Github is under construction, please visit later, thank you!)
