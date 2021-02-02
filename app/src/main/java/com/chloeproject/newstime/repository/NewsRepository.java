@@ -13,6 +13,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * NewsRepository to support Retrofit, contains all Model for all fragments
+ */
 public class NewsRepository {
 
     private final NewsApi newsApi;
