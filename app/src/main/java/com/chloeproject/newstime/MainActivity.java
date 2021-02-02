@@ -40,24 +40,25 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController);
 
 
-        // testing a request to News API:
-        NewsApi newsApi = RetrofitClient.newInstance(this).create(NewsApi.class);
-        newsApi.getTopHeadlines("US").enqueue(new Callback<NewsResponse>() {
-            // if response is valid
-            @Override
-            public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
-                if (response.isSuccessful()) {
-                    Log.d("getTopHeadlines", response.body().toString());
-                } else {
-                    Log.d("getTopHeadlines", response.toString());
-                }
-            }
-            // if response has error
-            @Override
-            public void onFailure(Call<NewsResponse> call, Throwable t) {
-                Log.d("getTopHeadlines", t.toString());
-            }
-        });
+//        // Testing a request to News API -> if success, will show in the notification drop-down bar:
+//        // But this testing code should be in "Model", not in this "View"; Therefore, it's migrated to "NewsRepository" class
+//        NewsApi newsApi = RetrofitClient.newInstance(this).create(NewsApi.class);
+//        newsApi.getTopHeadlines("US").enqueue(new Callback<NewsResponse>() {
+//            // if response is valid
+//            @Override
+//            public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
+//                if (response.isSuccessful()) {
+//                    Log.d("getTopHeadlines", response.body().toString());
+//                } else {
+//                    Log.d("getTopHeadlines", response.toString());
+//                }
+//            }
+//            // if response has error
+//            @Override
+//            public void onFailure(Call<NewsResponse> call, Throwable t) {
+//                Log.d("getTopHeadlines", t.toString());
+//            }
+//        });
     }
 
 
