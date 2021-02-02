@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
     }
 
     /**
-     * View is being created...
+     * use the ViewModels (from factory) in the Home Fragment
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
