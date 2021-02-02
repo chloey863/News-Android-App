@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.ashokvarma.gander.GanderInterceptor;
 import com.chloeproject.newstime.BuildConfig;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.io.IOException;
 
@@ -22,7 +23,10 @@ public class RetrofitClient {
     public static Retrofit newInstance(Context context) {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new HeaderInterceptor())
+                // add GanderInterceptor for debug
                 .addInterceptor(new GanderInterceptor(context).showNotification(true))
+                // add StethoInterceptor for debug, in case GanderInterceptor not work
+                .addNetworkInterceptor(new StethoInterceptor())
                 .build();
 
         // Retrofit is a type-safe HTTP client for Android and Java.
