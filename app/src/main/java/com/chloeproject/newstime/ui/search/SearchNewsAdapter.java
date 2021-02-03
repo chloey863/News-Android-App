@@ -40,9 +40,9 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
     }
 
 
-        /**
-         * onBindViewHolder is for binding the data with a view
-         */
+    /**
+     * onBindViewHolder is for binding the data with a view
+     */
     @Override
     public void onBindViewHolder(@NonNull SearchNewsViewHolder holder, int position) {
         Article article = articles.get(position);
