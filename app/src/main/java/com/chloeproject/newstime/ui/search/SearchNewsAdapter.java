@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chloeproject.newstime.R; // the Android resource lookup
 import com.chloeproject.newstime.databinding.SearchNewsItemBinding;
 import com.chloeproject.newstime.model.Article;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +47,12 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
     @Override
     public void onBindViewHolder(@NonNull SearchNewsViewHolder holder, int position) {
         Article article = articles.get(position);
+        // display news text
         holder.favoriteImageView.setImageResource(R.drawable.ic_favorite_24dp);
         holder.itemTitleTextView.setText(article.title);
+
+        // display news images
+        Picasso.get().load(article.urlToImage).into(holder.itemImageView);
     }
 
     /**
