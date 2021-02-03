@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chloeproject.newstime.R;
 import com.chloeproject.newstime.databinding.FragmentHomeBinding;
@@ -129,6 +130,14 @@ public class HomeFragment extends Fragment implements CardStackListener {
             // because it's after swiping
             viewModel.setFavoriteArticleInput(article);
 
+//                    .observe(getViewLifecycleOwner(), success -> {
+//                        if (success) {
+//                            Toast.makeText(requireContext(), "Article saved!", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(requireContext(), "Article already in db!",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
         }
     }
 
