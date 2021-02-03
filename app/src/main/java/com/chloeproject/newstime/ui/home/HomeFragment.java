@@ -128,16 +128,15 @@ public class HomeFragment extends Fragment implements CardStackListener {
             // wire-up the UI swipe interaction with the data persistence operation:
             Article article = articles.get(layoutManager.getTopPosition() - 1); // minus 1,
             // because it's after swiping
-            viewModel.setFavoriteArticleInput(article);
-
-//                    .observe(getViewLifecycleOwner(), success -> {
-//                        if (success) {
-//                            Toast.makeText(requireContext(), "Article saved!", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(requireContext(), "Article already in db!",
-//                                    Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
+            viewModel.setFavoriteArticleInput(article)
+                    .observe(getViewLifecycleOwner(), success -> {
+                        if (success) {
+                            Toast.makeText(requireContext(), "Article saved!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(requireContext(), "Article already in DB!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
     }
 

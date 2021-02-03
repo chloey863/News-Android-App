@@ -35,8 +35,8 @@ public class HomeViewModel extends ViewModel {
     /**
      * Saving the favorite article into database by calling favoriteArticle() API
      */
-    public void setFavoriteArticleInput(Article article) {
-        repository.favoriteArticle(article);
+    public LiveData<Boolean> setFavoriteArticleInput(Article article) {
+        return repository.favoriteArticle(article);
     }
 
 }
