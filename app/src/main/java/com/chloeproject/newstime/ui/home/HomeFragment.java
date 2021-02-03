@@ -109,7 +109,6 @@ public class HomeFragment extends Fragment implements CardStackListener {
         binding.homeCardStackView.swipe();
     }
 
-
     /**
      * Implementing the event callback methods from CartStackListener Interfaces:
      */

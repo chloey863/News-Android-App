@@ -1,21 +1,29 @@
 package com.chloeproject.newstime.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Map;
 import java.util.Objects;
 
+import javax.annotation.Nonnull;
+
+@Entity //the "article" table in database
 public class Article {
 
     public String author;
     public String title;
     public String description;
+
+    @Nonnull
+    @PrimaryKey // url is used as the primary key of the table
     public String url;
     public String urlToImage;
     public String publishedAt;
     public String content;
-//    The source field are omitted intentionally. We do not need it for UI display.
+//    The source field are omitted intentionally. Do not need it for UI display.
 //    This also simplifies some future designs for the database schema.
 //    public Object source;
-
 
     @Override
     public boolean equals(Object o) {
