@@ -15,14 +15,21 @@ import android.view.ViewGroup;
 
 import com.chloeproject.newstime.R;
 import com.chloeproject.newstime.databinding.FragmentHomeBinding;
+import com.chloeproject.newstime.model.Article;
 import com.chloeproject.newstime.model.NewsResponse;
 import com.chloeproject.newstime.repository.NewsRepository;
 import com.chloeproject.newstime.repository.NewsViewModelFactory;
+import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
+import com.yuyakaido.android.cardstackview.CardStackListener;
+import com.yuyakaido.android.cardstackview.StackFrom;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
     private HomeViewModel viewModel;
-
     private FragmentHomeBinding binding;
+    private CardStackLayoutManager layoutManager;
+    private List<Article> articles;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -52,6 +59,17 @@ public class HomeFragment extends Fragment {
         // refer to fragment lifecycle
         super.onViewCreated(view, savedInstanceState);
 
+        // Setup CardStackView
+        CardSwipeAdapter swipeAdapter = new CardSwipeAdapter();
+        layoutManager = new CardStackLayoutManager(requireContext());
+        layoutManager.setStackFrom(StackFrom.Top);
+        binding.homeCardStackView.setLayoutManager(layoutManager);
+        binding.homeCardStackView.setAdapter(swipeAdapter);
+
+        // Handle like unlike button clicks
+        // TODO
+
+
         NewsRepository repository = new NewsRepository(getContext());
 
         // use the viewModel from factory to create a viewModel for this Home Fragment
@@ -66,6 +84,8 @@ public class HomeFragment extends Fragment {
             @Override // or use a Lambda function
             public void onChanged(NewsResponse newsResponse) {
                 if (newsResponse != null) {
+                    articles = newsResponse.articles;
+                    swipeAdapter.setArticles(articles);
                     Log.d("HomeFragment", newsResponse.toString());
                 }
             }
