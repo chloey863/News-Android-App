@@ -33,6 +33,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    // viewBinding is a tool allowing automatic binding UI layout resources with your Java code.
+    viewBinding {
+        enabled = true
+    }
+
 }
 
 dependencies {

@@ -38,7 +38,8 @@ public class RetrofitClient {
     }
 
     /**
-     * Functionality: building Http request header Via the X-Api-Key HTTP header.
+     * Functionality: Intercepting(lan jie) the headers of all request, and build the Http request
+     * header Via the X-Api-Key HTTP header.
      * Ref docs: https://newsapi.org/docs/authentication
      */
     private static class HeaderInterceptor implements Interceptor {
