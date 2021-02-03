@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Since the app has a search bar on top and a list for the results below, a vertical LinearLayout is-->
-<!--an ideal candidate-->
+<!--Since the app has a search bar on top and a list for the results below, a vertical LinearLayout
+ is an ideal candidate-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
