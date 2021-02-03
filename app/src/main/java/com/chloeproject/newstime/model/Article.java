@@ -1,23 +1,23 @@
 package com.chloeproject.newstime.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Map;
 import java.util.Objects;
 
-import javax.annotation.Nonnull;
 
 @Entity //the "article" table in database
 public class Article {
-
     public String author;
     public String title;
     public String description;
 
-    @Nonnull
-    @PrimaryKey // url is used as the primary key of the table
+    @NonNull
+    @PrimaryKey// url is used as the primary key of the table
     public String url;
+
     public String urlToImage;
     public String publishedAt;
     public String content;
@@ -33,7 +33,7 @@ public class Article {
         return Objects.equals(author, article.author) &&
                 Objects.equals(title, article.title) &&
                 Objects.equals(description, article.description) &&
-                Objects.equals(url, article.url) &&
+                url.equals(article.url) &&
                 Objects.equals(urlToImage, article.urlToImage) &&
                 Objects.equals(publishedAt, article.publishedAt) &&
                 Objects.equals(content, article.content);
