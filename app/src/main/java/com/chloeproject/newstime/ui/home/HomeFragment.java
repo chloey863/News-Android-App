@@ -21,11 +21,14 @@ import com.chloeproject.newstime.repository.NewsRepository;
 import com.chloeproject.newstime.repository.NewsViewModelFactory;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
+import com.yuyakaido.android.cardstackview.Direction;
+import com.yuyakaido.android.cardstackview.Duration;
 import com.yuyakaido.android.cardstackview.StackFrom;
+import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
 
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements CardStackListener {
     private HomeViewModel viewModel;
     private FragmentHomeBinding binding;
     private CardStackLayoutManager layoutManager;
@@ -61,13 +64,14 @@ public class HomeFragment extends Fragment {
 
         // Setup CardStackView
         CardSwipeAdapter swipeAdapter = new CardSwipeAdapter();
-        layoutManager = new CardStackLayoutManager(requireContext());
+        layoutManager = new CardStackLayoutManager(requireContext(), this);
         layoutManager.setStackFrom(StackFrom.Top);
         binding.homeCardStackView.setLayoutManager(layoutManager);
         binding.homeCardStackView.setAdapter(swipeAdapter);
 
-        // Handle like unlike button clicks
-        // TODO
+        // Handle like unlike button clicks (programmatically swipe the card by specifying a direction)
+        binding.homeLikeButton.setOnClickListener(v -> swipeCard(Direction.Right));
+        binding.homeUnlikeButton.setOnClickListener(v -> swipeCard(Direction.Left));
 
 
         NewsRepository repository = new NewsRepository(getContext());
@@ -92,4 +96,54 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    /**
+     * Functionality: perform swipe by direction
+     * (Used by wwipe events for the like and unlike buttons)
+     */
+    private void swipeCard(Direction direction) {
+        SwipeAnimationSetting setting = new SwipeAnimationSetting.Builder()
+                .setDirection(direction)
+                .setDuration(Duration.Normal.duration)
+                .build();
+        layoutManager.setSwipeAnimationSetting(setting);
+        binding.homeCardStackView.swipe();
+    }
+
+
+    /**
+     * Implementing the event callback methods from CartStackListener Interfaces:
+     */
+    @Override
+    public void onCardDragging(Direction direction, float ratio) {
+
+    }
+
+    @Override
+    public void onCardSwiped(Direction direction) {
+        if (direction == Direction.Left) {
+            Log.d("CardStackView", "Unliked " + layoutManager.getTopPosition());
+        } else if (direction == Direction.Right) {
+            Log.d("CardStackView", "Liked "  + layoutManager.getTopPosition());
+        }
+    }
+
+    @Override
+    public void onCardRewound() {
+
+    }
+
+    @Override
+    public void onCardCanceled() {
+
+    }
+
+    @Override
+    public void onCardAppeared(View view, int position) {
+
+    }
+
+    @Override
+    public void onCardDisappeared(View view, int position) {
+
+    }
 }
