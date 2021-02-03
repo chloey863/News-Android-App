@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.chloeproject.newstime.model.Article;
 import com.chloeproject.newstime.model.NewsResponse;
 import com.chloeproject.newstime.repository.NewsRepository;
 
@@ -29,5 +30,14 @@ public class HomeViewModel extends ViewModel {
     public LiveData<NewsResponse> getTopHeadlines() {
         return Transformations.switchMap(countryInput, repository::getTopHeadlines);
     }
+
+
+    /**
+     * Saving the favorite article into database by calling favoriteArticle() API
+     */
+    public void setFavoriteArticleInput(Article article) {
+        repository.favoriteArticle(article);
+    }
+
 }
 

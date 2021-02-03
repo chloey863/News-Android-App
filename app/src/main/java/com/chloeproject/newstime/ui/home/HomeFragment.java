@@ -123,6 +123,12 @@ public class HomeFragment extends Fragment implements CardStackListener {
             Log.d("CardStackView", "Unliked " + layoutManager.getTopPosition());
         } else if (direction == Direction.Right) {
             Log.d("CardStackView", "Liked "  + layoutManager.getTopPosition());
+
+            // wire-up the UI swipe interaction with the data persistence operation:
+            Article article = articles.get(layoutManager.getTopPosition() - 1); // minus 1,
+            // because it's after swiping
+            viewModel.setFavoriteArticleInput(article);
+
         }
     }
 
