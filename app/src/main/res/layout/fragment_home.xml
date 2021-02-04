@@ -50,6 +50,7 @@ unlike buttons.-->
 </LinearLayout>
 
 
+<!--For Testing:-->
 <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    xmlns:tools="http://schemas.android.com/tools"-->
