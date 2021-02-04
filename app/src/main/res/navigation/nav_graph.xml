@@ -16,6 +16,9 @@
         android:name="com.chloeproject.newstime.ui.save.SaveFragment"
         android:label="@string/title_save"
         tools:layout="@layout/fragment_save" >
+        <action
+            android:id="@+id/action_navigation_save_to_navigation_details"
+            app:destination="@id/navigation_details" />
     </fragment>
 
     <fragment
@@ -23,6 +26,9 @@
         android:name="com.chloeproject.newstime.ui.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_details"
+            app:destination="@id/navigation_details" />
     </fragment>
 
     <fragment
