@@ -13,6 +13,8 @@ import com.chloeproject.newstime.model.NewsResponse;
 import com.chloeproject.newstime.network.NewsApi;
 import com.chloeproject.newstime.network.RetrofitClient;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,7 +35,7 @@ public class NewsRepository {
     }
 
     /**
-     * Implementing getTopHeadlines API
+     * Implementing getTopHeadlines API (for HomeFragment)
      */
     public LiveData<NewsResponse> getTopHeadlines(String country) {
         // MutableLiveData is a data-stream, an object to be observed, can be setValue()
@@ -138,4 +140,20 @@ public class NewsRepository {
         new FavoriteAsyncTask(database, resultLiveData).execute(article);
         return resultLiveData;
     }
+
+
+    /**
+     * Implementing getAllSavedArticles API (for SaveFragment)
+     */
+    public LiveData<List<Article>> getAllSavedArticles() {
+        return database.articleDao().getAllArticles();
+    }
+
+    /**
+     * Implementing deleteSavedArticle API (for SaveFragment)
+     */
+    public void deleteSavedArticle(Article article) {
+        AsyncTask.execute(() -> database.articleDao().deleteArticle(article));
+    }
+
 }
