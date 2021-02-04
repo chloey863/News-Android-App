@@ -4,12 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Objects;
 
 
 @Entity //the "article" table in database
-public class Article {
+public class Article implements Serializable {
     public String author;
     public String title;
     public String description;
