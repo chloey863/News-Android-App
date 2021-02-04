@@ -17,6 +17,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SavedNewsAdapter extends RecyclerView.Adapter<SavedNewsAdapter.SavedNewsViewHolder> {
+    /**
+     * Use the itemCallback interface to inform the implementer the onRemoveFavorite event when the
+     * favoriteIcon is clicked, also inform the opening for details event.
+     * (i.e. for deleting previous favorite-ed articles)
+     */
+    interface ItemCallback {
+
+        /**
+         * onOpenDetails is to be implemented for opening a new fragment for article details.
+         */
+        void onOpenDetails(Article article);
+
+        /**
+         * onRemoveFavorite is te be implemented to remove articles in the saved database.
+         */
+        void onRemoveFavorite(Article article);
+    }
+
+    private ItemCallback itemCallback;
+
+    public void setItemCallback(ItemCallback itemCallback) {
+        this.itemCallback = itemCallback;
+    }
+
     // 1. Supporting data:
     private List<Article> articles = new ArrayList<>();
 
@@ -44,8 +68,14 @@ public class SavedNewsAdapter extends RecyclerView.Adapter<SavedNewsAdapter.Save
     @Override
     public void onBindViewHolder(@NonNull SavedNewsViewHolder holder, int position) {
         Article article = articles.get(position);
+
+        // display favorite article/news text
         holder.authorTextView.setText(article.author);
         holder.descriptionTextView.setText(article.description);
+
+        holder.favoriteIcon.setOnClickListener(v -> itemCallback.onRemoveFavorite(article));
+        holder.itemView.setOnClickListener(v -> itemCallback.onOpenDetails(article));
+
     }
 
     /**

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.chloeproject.newstime.R;
 import com.chloeproject.newstime.databinding.FragmentSaveBinding;
+import com.chloeproject.newstime.model.Article;
 import com.chloeproject.newstime.repository.NewsRepository;
 import com.chloeproject.newstime.repository.NewsViewModelFactory;
 
@@ -74,5 +75,19 @@ public class SaveFragment extends Fragment {
                                 savedNewsAdapter.setArticles(savedArticles);
                             }
                         });
+
+        // Provide an anonymous implementation of ItemCallback to the savedNewsAdapter:
+        savedNewsAdapter.setItemCallback(new SavedNewsAdapter.ItemCallback() {
+            @Override
+            public void onOpenDetails(Article article) {
+                // TODO
+                Log.d("onOpenDetails", article.toString());
+            }
+
+            @Override
+            public void onRemoveFavorite(Article article) {
+                viewModel.deleteSavedArticle(article);
+            }
+        });
     }
 }
