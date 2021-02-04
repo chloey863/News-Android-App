@@ -20,8 +20,9 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
+        android:background="@color/white"
+        app:itemIconTint="@color/text_black"
+        app:itemTextColor="@color/text_black"
+
         app:menu="@menu/bottom_nav_menu" />
 </LinearLayout>
