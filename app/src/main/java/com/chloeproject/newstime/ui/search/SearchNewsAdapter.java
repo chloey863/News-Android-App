@@ -18,6 +18,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.SearchNewsViewHolder> {
+    /**
+     * Use the itemCallback to inform the implementer the onOpenDetails event when an item is
+     * clicked. In SearchNewsAdapter.onBindViewHolder we call onOpenDetails whenever the item is
+     * clicked.
+     */
+    interface ItemCallback {
+        /**
+         * onOpenDetails is to be implemented for opening a new fragment for article details.
+         */
+        void onOpenDetails(Article article);
+    }
+
+    private ItemCallback itemCallback;
+
+    public void setItemCallback(ItemCallback itemCallback) {
+        this.itemCallback = itemCallback;
+    }
+
+
     // 1. Supporting data:
     private List<Article> articles = new ArrayList<>();
 
@@ -53,6 +72,8 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
 
         // display news images using Picasso Library
         Picasso.get().load(article.urlToImage).into(holder.itemImageView);
+
+        holder.itemView.setOnClickListener(v -> itemCallback.onOpenDetails(article));
     }
 
     /**
