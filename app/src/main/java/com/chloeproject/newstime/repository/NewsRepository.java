@@ -114,7 +114,7 @@ public class NewsRepository {
         protected Boolean doInBackground(Article... articles) {
             Article article = articles[0];
             try {
-                // fixme:
+                // FIXME: remove "article" casting?
                 database.articleDao().saveArticle((com.chloeproject.newstime.model.Article) article);
             } catch (Exception e) {
                 return false;
@@ -141,7 +141,6 @@ public class NewsRepository {
         return resultLiveData;
     }
 
-
     /**
      * Implementing getAllSavedArticles API (for SaveFragment)
      */
@@ -155,5 +154,4 @@ public class NewsRepository {
     public void deleteSavedArticle(Article article) {
         AsyncTask.execute(() -> database.articleDao().deleteArticle(article));
     }
-
 }
