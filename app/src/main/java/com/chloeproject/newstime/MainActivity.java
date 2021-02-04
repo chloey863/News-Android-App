@@ -36,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
         // bind the bottomNavigationView and navController
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-        // then, bind action bar and navController
-        NavigationUI.setupActionBarWithNavController(this, navController);
+        // then, bind action bar and navController (update: removed to avoid crashing when
+        // removing actionBar in themes.xml)
+//        NavigationUI.setupActionBarWithNavController(this, navController);
 
 
 //        // Testing a request to News API -> if success, will show in the notification drop-down bar:
