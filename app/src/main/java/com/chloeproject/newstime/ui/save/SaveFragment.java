@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import android.util.Log;
@@ -55,6 +56,11 @@ public class SaveFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Setup CardStackView with adapter
+        SavedNewsAdapter savedNewsAdapter = new SavedNewsAdapter();
+        binding.newsSavedRecyclerView.setAdapter(savedNewsAdapter);
+        binding.newsSavedRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+
         // making query for the saved articles
         NewsRepository repository = new NewsRepository(getContext());
         viewModel = new ViewModelProvider(this, new NewsViewModelFactory(repository)).get(SaveViewModel.class);
@@ -65,8 +71,8 @@ public class SaveFragment extends Fragment {
                         savedArticles -> {
                             if (savedArticles != null) {
                                 Log.d("SaveFragment", savedArticles.toString());
+                                savedNewsAdapter.setArticles(savedArticles);
                             }
                         });
-
     }
 }
