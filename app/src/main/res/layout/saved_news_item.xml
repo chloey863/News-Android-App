@@ -25,7 +25,7 @@
             android:id="@+id/saved_item_author_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Author:"
+            android:text="@string/saved_item_author"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Description:"
+            android:text="@string/saved_item_description"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/saved_item_author_title" />
